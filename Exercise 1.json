@@ -1,0 +1,1105 @@
+{
+    "metadata": {
+        "kernelspec": {
+            "name": "SQL",
+            "display_name": "SQL",
+            "language": "sql"
+        },
+        "language_info": {
+            "name": "sql",
+            "version": ""
+        }
+    },
+    "nbformat_minor": 2,
+    "nbformat": 4,
+    "cells": [
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT TOP 5 FullName\r\n",
+                "FROM Application.People"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "01c2d014-281e-40cd-bdfc-8f65db3402e2"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(5 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 1,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "FullName"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "Aahlada Thota"
+                                },
+                                {
+                                    "0": "Aakarsha Nookala"
+                                },
+                                {
+                                    "0": "Aakriti Bhamidipati"
+                                },
+                                {
+                                    "0": "Aakriti Byrraju"
+                                },
+                                {
+                                    "0": "Aamdaal Kamasamudram"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>FullName</th></tr>",
+                            "<tr><td>Aahlada Thota</td></tr>",
+                            "<tr><td>Aakarsha Nookala</td></tr>",
+                            "<tr><td>Aakriti Bhamidipati</td></tr>",
+                            "<tr><td>Aakriti Byrraju</td></tr>",
+                            "<tr><td>Aamdaal Kamasamudram</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 1
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT TOP 5 FullName, SUBSTRING(FullName, 1, CHARINDEX(' ', FullName) - 1) AS FirstName,\r\n",
+                "SUBSTRING(FullName, CHARINDEX(' ', FullName) + 1, LEN(FullName)) AS LastName\r\n",
+                "FROM Application.People"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "f955fa0a-a21e-4872-a6ee-02e850a3167c"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(5 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.011"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 6,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "FullName"
+                                    },
+                                    {
+                                        "name": "FirstName"
+                                    },
+                                    {
+                                        "name": "LastName"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "Aahlada Thota",
+                                    "1": "Aahlada",
+                                    "2": "Thota"
+                                },
+                                {
+                                    "0": "Aakarsha Nookala",
+                                    "1": "Aakarsha",
+                                    "2": "Nookala"
+                                },
+                                {
+                                    "0": "Aakriti Bhamidipati",
+                                    "1": "Aakriti",
+                                    "2": "Bhamidipati"
+                                },
+                                {
+                                    "0": "Aakriti Byrraju",
+                                    "1": "Aakriti",
+                                    "2": "Byrraju"
+                                },
+                                {
+                                    "0": "Aamdaal Kamasamudram",
+                                    "1": "Aamdaal",
+                                    "2": "Kamasamudram"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>FullName</th><th>FirstName</th><th>LastName</th></tr>",
+                            "<tr><td>Aahlada Thota</td><td>Aahlada</td><td>Thota</td></tr>",
+                            "<tr><td>Aakarsha Nookala</td><td>Aakarsha</td><td>Nookala</td></tr>",
+                            "<tr><td>Aakriti Bhamidipati</td><td>Aakriti</td><td>Bhamidipati</td></tr>",
+                            "<tr><td>Aakriti Byrraju</td><td>Aakriti</td><td>Byrraju</td></tr>",
+                            "<tr><td>Aamdaal Kamasamudram</td><td>Aamdaal</td><td>Kamasamudram</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 6
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT CustomerCategoryName, PATINDEX('G%', CustomerCategoryName)\r\n",
+                "FROM Sales.CustomerCategories"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "0b04f050-f4bd-4695-9f4b-31ac635b13ff",
+                "tags": [
+                    "hide_input"
+                ]
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(8 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.011"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 8,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "CustomerCategoryName"
+                                    },
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "Agent",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Computer Store",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Corporate",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "General Retailer",
+                                    "1": "1"
+                                },
+                                {
+                                    "0": "Gift Store",
+                                    "1": "1"
+                                },
+                                {
+                                    "0": "Novelty Shop",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Supermarket",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Wholesaler",
+                                    "1": "0"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>CustomerCategoryName</th><th>(No column name)</th></tr>",
+                            "<tr><td>Agent</td><td>0</td></tr>",
+                            "<tr><td>Computer Store</td><td>0</td></tr>",
+                            "<tr><td>Corporate</td><td>0</td></tr>",
+                            "<tr><td>General Retailer</td><td>1</td></tr>",
+                            "<tr><td>Gift Store</td><td>1</td></tr>",
+                            "<tr><td>Novelty Shop</td><td>0</td></tr>",
+                            "<tr><td>Supermarket</td><td>0</td></tr>",
+                            "<tr><td>Wholesaler</td><td>0</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 8
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT TOP 8 CustomerCategoryName, PATINDEX('G%[Rr]%', CustomerCategoryName)\r\n",
+                "FROM Sales.CustomerCategories"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "a2eaf298-e787-4423-92eb-87a51cdf2436"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(8 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.006"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 9,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "CustomerCategoryName"
+                                    },
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "Agent",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Computer Store",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Corporate",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "General Retailer",
+                                    "1": "1"
+                                },
+                                {
+                                    "0": "Gift Store",
+                                    "1": "1"
+                                },
+                                {
+                                    "0": "Novelty Shop",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Supermarket",
+                                    "1": "0"
+                                },
+                                {
+                                    "0": "Wholesaler",
+                                    "1": "0"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>CustomerCategoryName</th><th>(No column name)</th></tr>",
+                            "<tr><td>Agent</td><td>0</td></tr>",
+                            "<tr><td>Computer Store</td><td>0</td></tr>",
+                            "<tr><td>Corporate</td><td>0</td></tr>",
+                            "<tr><td>General Retailer</td><td>1</td></tr>",
+                            "<tr><td>Gift Store</td><td>1</td></tr>",
+                            "<tr><td>Novelty Shop</td><td>0</td></tr>",
+                            "<tr><td>Supermarket</td><td>0</td></tr>",
+                            "<tr><td>Wholesaler</td><td>0</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 9
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 6 + 6"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "c0822024-7b16-48e0-b589-4127b323d413"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 10,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "12"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>12</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 10
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 5 / 2"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "d3d2d6e4-1d39-4bde-ac86-fc7ba6e6a226"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.003"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 11,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "2"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>2</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 11
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 5.0 / 2.0"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "51226502-46b2-432d-90cf-db238e7bfe3f"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.009"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 12,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "2.500000"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>2.500000</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 12
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 5.0 / 2"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "4f29ac2b-bde8-45f1-9a54-fb2a8c8dc47f"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 13,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "2.500000"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>2.500000</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 13
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 5 / 2.0"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "854702b6-c5b2-474a-a7e6-538246216c36"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 14,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "2.500000"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>2.500000</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 14
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT ABS(-5)"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "0442f859-804c-4c17-83ff-aa342a81d9ee"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.007"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 15,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "5"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>5</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 15
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 6 * 2"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "f1df93ab-8383-4025-92cd-0ad498c5bea8"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 16,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "12"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>12</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 16
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 6 * 2.0"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "04d8437a-a3ff-48c1-8074-020693173e03"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 17,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "12.0"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>12.0</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 17
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 6/4, 6%4"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "e9106051-061b-4cdf-b08a-365a86ce3f38"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.007"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 18,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    },
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "1",
+                                    "1": "2"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th><th>(No column name)</th></tr>",
+                            "<tr><td>1</td><td>2</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 18
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT POWER(6, 2)"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "f3e5d332-8cd0-4dcb-864a-a1c91fbbee5c"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 20,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "36"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>36</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 20
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT *\r\n",
+                "FROM Sales.CustomerCategories"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "1384180f-78f8-4fd8-b225-09177c853864"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(8 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.011"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 21,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "CustomerCategoryID"
+                                    },
+                                    {
+                                        "name": "CustomerCategoryName"
+                                    },
+                                    {
+                                        "name": "LastEditedBy"
+                                    },
+                                    {
+                                        "name": "ValidFrom"
+                                    },
+                                    {
+                                        "name": "ValidTo"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "1",
+                                    "1": "Agent",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "2",
+                                    "1": "Wholesaler",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "3",
+                                    "1": "Novelty Shop",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "4",
+                                    "1": "Supermarket",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "5",
+                                    "1": "Computer Store",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "6",
+                                    "1": "Gift Store",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "7",
+                                    "1": "Corporate",
+                                    "2": "1",
+                                    "3": "2013-01-01 00:00:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                },
+                                {
+                                    "0": "8",
+                                    "1": "General Retailer",
+                                    "2": "9",
+                                    "3": "2014-01-01 16:15:00.0000000",
+                                    "4": "9999-12-31 23:59:59.9999999"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>CustomerCategoryID</th><th>CustomerCategoryName</th><th>LastEditedBy</th><th>ValidFrom</th><th>ValidTo</th></tr>",
+                            "<tr><td>1</td><td>Agent</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>2</td><td>Wholesaler</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>3</td><td>Novelty Shop</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>4</td><td>Supermarket</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>5</td><td>Computer Store</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>6</td><td>Gift Store</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>7</td><td>Corporate</td><td>1</td><td>2013-01-01 00:00:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "<tr><td>8</td><td>General Retailer</td><td>9</td><td>2014-01-01 16:15:00.0000000</td><td>9999-12-31 23:59:59.9999999</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 21
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT TOP 8 CustomerCategoryName\r\n",
+                "FROM Sales.CustomerCategories"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "8bfb29b1-cc6d-481c-9bc1-2162a3a67386"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(8 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.010"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 23,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "CustomerCategoryName"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "Agent"
+                                },
+                                {
+                                    "0": "Computer Store"
+                                },
+                                {
+                                    "0": "Corporate"
+                                },
+                                {
+                                    "0": "General Retailer"
+                                },
+                                {
+                                    "0": "Gift Store"
+                                },
+                                {
+                                    "0": "Novelty Shop"
+                                },
+                                {
+                                    "0": "Supermarket"
+                                },
+                                {
+                                    "0": "Wholesaler"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>CustomerCategoryName</th></tr>",
+                            "<tr><td>Agent</td></tr>",
+                            "<tr><td>Computer Store</td></tr>",
+                            "<tr><td>Corporate</td></tr>",
+                            "<tr><td>General Retailer</td></tr>",
+                            "<tr><td>Gift Store</td></tr>",
+                            "<tr><td>Novelty Shop</td></tr>",
+                            "<tr><td>Supermarket</td></tr>",
+                            "<tr><td>Wholesaler</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 23
+        }
+    ]
+}

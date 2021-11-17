@@ -1,0 +1,424 @@
+{
+    "metadata": {
+        "kernelspec": {
+            "name": "SQL",
+            "display_name": "SQL",
+            "language": "sql"
+        },
+        "language_info": {
+            "name": "sql",
+            "version": ""
+        }
+    },
+    "nbformat_minor": 2,
+    "nbformat": 4,
+    "cells": [
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 'All for one, and one for all.'"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "8a2cdec1-5fe4-4f77-8994-8a234a947a0c",
+                "tags": []
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.008"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 2,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "All for one, and one for all."
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>All for one, and one for all.</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 2
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 'All for one,' + 'and one for all'"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "919fec4b-8d20-46ce-ab88-6d2d040d8c34",
+                "tags": []
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.006"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 3,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "All for one,and one for all"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>All for one,and one for all</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 3
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT 'All' + ' for one' + ', and' + ' one for' + ' all'"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "c1d4622c-963a-4df5-b86e-5ef1f6ee2295",
+                "tags": []
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.004"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 6,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "All for one, and one for all"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>All for one, and one for all</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 6
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT LEN('All for one, and one for all')"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "bafdf13f-828a-4652-8015-3725be5dac37",
+                "tags": []
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.005"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 10,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "28"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>28</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 10
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT CONCAT('All for one,', ' and all for one')"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "b46d1ad8-1604-48fe-846f-b40c805c3fe9",
+                "tags": []
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(1 row affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.008"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 12,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "(No column name)"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "All for one, and all for one"
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>(No column name)</th></tr>",
+                            "<tr><td>All for one, and all for one</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 12
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT * \r\n",
+                "FROM STRING_SPLIT('All for one, and one for all.', ' ')"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "01274c97-85d3-421b-8268-33c584d1077c",
+                "tags": []
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(7 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.009"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 9,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "value"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "All"
+                                },
+                                {
+                                    "0": "for"
+                                },
+                                {
+                                    "0": "one,"
+                                },
+                                {
+                                    "0": "and"
+                                },
+                                {
+                                    "0": "one"
+                                },
+                                {
+                                    "0": "for"
+                                },
+                                {
+                                    "0": "all."
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>value</th></tr>",
+                            "<tr><td>All</td></tr>",
+                            "<tr><td>for</td></tr>",
+                            "<tr><td>one,</td></tr>",
+                            "<tr><td>and</td></tr>",
+                            "<tr><td>one</td></tr>",
+                            "<tr><td>for</td></tr>",
+                            "<tr><td>all.</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 9
+        },
+        {
+            "cell_type": "code",
+            "source": [
+                "SELECT *\r\n",
+                "FROM STRING_SPLIT('All for one, and one for all.', ',' )"
+            ],
+            "metadata": {
+                "azdata_cell_guid": "752facb1-e412-4699-b8d9-21b89c45081a"
+            },
+            "outputs": [
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "(2 rows affected)"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "display_data",
+                    "data": {
+                        "text/html": "Total execution time: 00:00:00.008"
+                    },
+                    "metadata": {}
+                },
+                {
+                    "output_type": "execute_result",
+                    "metadata": {},
+                    "execution_count": 15,
+                    "data": {
+                        "application/vnd.dataresource+json": {
+                            "schema": {
+                                "fields": [
+                                    {
+                                        "name": "value"
+                                    }
+                                ]
+                            },
+                            "data": [
+                                {
+                                    "0": "All for one"
+                                },
+                                {
+                                    "0": " and one for all."
+                                }
+                            ]
+                        },
+                        "text/html": [
+                            "<table>",
+                            "<tr><th>value</th></tr>",
+                            "<tr><td>All for one</td></tr>",
+                            "<tr><td> and one for all.</td></tr>",
+                            "</table>"
+                        ]
+                    }
+                }
+            ],
+            "execution_count": 15
+        }
+    ]
+}
